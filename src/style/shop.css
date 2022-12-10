@@ -1,0 +1,58 @@
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 40px;
+    padding: 20px 30px;
+}
+
+.products > div {
+    border-radius: 15px;
+    height: 300px;
+    overflow: hidden;
+    background-color: rgb(35, 57, 93, 0.1);
+}
+
+.products img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+
+}
+
+.products .title {
+    font-weight: 500;
+    color: rgb(53, 52, 52);
+    padding: 12px;
+    height: 10%;
+}
+
+.products .price {
+    color: rgb(53, 52, 52);
+    font-weight: 600;
+    padding-left: 12px;
+    height: 10%;
+}
+
+.products .ops {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    margin-top: auto;
+}
+
+.products .amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.amount > input {
+    width: 30px;
+    text-align: center;
+}
+
+.ops .icon {
+    cursor: pointer;
+}
