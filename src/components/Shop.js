@@ -6,27 +6,34 @@ import MaterialIcon from 'material-icons-react';
 import { useState } from "react";
 import { products } from "../products";
 
-const Shop = ({cartTotal, setCartTotal}) => {
+const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
 
-    // Map - map all the product Ids to amount 
-    const [productAmount, setProductAmount] = useState(new Map(products.map((item) => [item.id, 0])))
-    // cart state - map added product to amount; empty initially
-    const [cart, setCart] = useState(new Map())
-    // const [cartTotal, setCartTotal] = useState(0)
+    // The object consists of the product id to its amount - {id: amount, id: amount, ...}
+    // this is to keep track of the user entered product amount
+    // Initially all products have an amount of 0
+    const [productAmount, setProductAmount] = useState(products.reduce((obj, product) => {
+        obj[product.id] = 0;
+        return obj;
+    }, {}))
 
     const handleAmountChange = (prodId, e) => {
-        setProductAmount(new Map(productAmount.set(prodId, e.target.value)))
+        setProductAmount({...productAmount, [prodId]: e.target.value})
     }
 
     const handleAmountInc = (prodId, e) => {
-        setProductAmount(new Map(productAmount.set(prodId, +productAmount.get(prodId) + 1)))
+        setProductAmount({...productAmount, [prodId]: +productAmount[prodId] + 1})
+
     }
 
-    const handleAddToCart = (prod, e) => {
-        setCart(new Map(cart.set(prod, productAmount.get(prod.id))))
-        setCartTotal(cartTotal + productAmount.get(prod.id))
+    const handleAddToCart = (prodId, e) => {
+        if (cart[prodId] > 0) {
+            setCart({...cart, [prodId]: +productAmount[prodId] + cart[prodId]})
+        } else {
+            setCart({...cart, [prodId]: +productAmount[prodId]});
+        }
+        setCartTotal(cartTotal + +productAmount[prodId])
         // reset product amount
-        setProductAmount(new Map(productAmount.set(prod.id, 0)))
+        setProductAmount({...productAmount, [prodId]: 0})
     }
 
     return (
@@ -38,20 +45,20 @@ const Shop = ({cartTotal, setCartTotal}) => {
                         <div key={product.id}>
                             <img src={product.image} alt=""></img>
                             <div className="title">{product.title} </div>
-                            <div className="price">{product.price}</div>
+                            <div className="price">${product.price}</div>
                             <div className="ops">
                                 <div className="amount">
 
                                     <div className="icon" >
                                         <MaterialIcon icon="remove" size={20}/>
                                     </div>
-                                    <input type='text' id="amnt" value={productAmount.get(product.id)} onChange={handleAmountChange.bind(null, product.id)}></input>
+                                    <input type='text' id="amnt" value={productAmount[product.id]} onChange={handleAmountChange.bind(null, product.id)}></input>
                                     <div className="icon" onClick={handleAmountInc.bind(null, product.id)}>
                                         <MaterialIcon icon="add" size={20}/>
                                     </div>
                             
                                 </div>
-                                <div className="icon" onClick={handleAddToCart.bind(null, product)}>
+                                <div className="icon" onClick={handleAddToCart.bind(null, product.id)}>
                                     <MaterialIcon icon="add_shopping_cart" size={25} />
                                 </div>
                             </div>

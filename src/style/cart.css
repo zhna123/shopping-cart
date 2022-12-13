@@ -1,0 +1,52 @@
+.cart_item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+    margin: 20px;
+    box-shadow: 0 1px rgb(216, 215, 215) ;
+}
+
+.cart_item > div:first-child {
+    width: 100px;
+    height: 100px;
+}
+
+.cart_item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart_item > div:nth-child(2) {
+    width: 30%;
+}
+
+.cart_item > #edit,
+.cart_item > #delete {
+    cursor: pointer;
+}
+
+
+.submit {
+    width: 10%;
+    height: 40px;
+    margin: auto;
+    background-color: var(--dark_blue);
+    color: white;
+    font: inherit;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px .5px rgb(35, 57, 93, .7);
+}
+
+.cart_msg {
+    display: flex;
+    padding: 80px;
+    font-size: 2rem;
+    color: var(--dark_gray);
+    justify-content: center;
+    align-items: center;
+}
+

@@ -21,13 +21,13 @@
 
 .products .title {
     font-weight: 500;
-    color: rgb(53, 52, 52);
+    color: var(--dark_gray);
     padding: 12px;
     height: 10%;
 }
 
 .products .price {
-    color: rgb(53, 52, 52);
+    color: var(--dark_gray);
     font-weight: 600;
     padding-left: 12px;
     height: 10%;

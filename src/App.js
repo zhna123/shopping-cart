@@ -9,13 +9,19 @@ import { useState } from "react";
 function App() {
   // cart number will apear in header on all pages
   const [cartTotal, setCartTotal] = useState(0)
+  // cart state - product id to amount object
+  // object consists of each product id to its amount - {product id: amount, product id: amount, ...}
+  // empty object initially
+  const [cart, setCart] = useState({})
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home cartTotal = {cartTotal}/>} />
-        <Route path='/shop' element={<Shop cartTotal = {cartTotal} setCartTotal = {setCartTotal}/>} />
-        <Route path='/cart' element={<Cart cartTotal = {cartTotal}/>} />
+        <Route path='/shop' element={<Shop cartTotal = {cartTotal} setCartTotal = {setCartTotal}
+                                            cart={cart} setCart={setCart}/>} />
+        <Route path='/cart' element={<Cart cartTotal = {cartTotal} setCartTotal = {setCartTotal} 
+                                            cart={cart} setCart={setCart}/>} />
       </Routes>
     
     </BrowserRouter>
