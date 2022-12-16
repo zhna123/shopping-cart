@@ -17,7 +17,10 @@ const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
     }, {}))
 
     const handleAmountChange = (prodId, e) => {
-        setProductAmount({...productAmount, [prodId]: e.target.value})
+        const input = e.target.value;
+        if(!isNaN(input)) {
+            setProductAmount({...productAmount, [prodId]: e.target.value})
+        }
     }
 
     const handleAmountInc = (prodId, e) => {
@@ -25,7 +28,17 @@ const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
 
     }
 
+    const handleAmountDec = (prodId, e) => {
+        if (+productAmount[prodId] > 0) {
+            setProductAmount({...productAmount, [prodId]: +productAmount[prodId] - 1})
+        }
+
+    }
+
     const handleAddToCart = (prodId, e) => {
+        if (+productAmount[prodId] === 0) {
+            return;
+        }
         if (cart[prodId] > 0) {
             setCart({...cart, [prodId]: +productAmount[prodId] + cart[prodId]})
         } else {
@@ -49,7 +62,7 @@ const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
                             <div className="ops">
                                 <div className="amount">
 
-                                    <div className="icon" >
+                                    <div className="icon" onClick={handleAmountDec.bind(null, product.id)} >
                                         <MaterialIcon icon="remove" size={20}/>
                                     </div>
                                     <input type='text' id="amnt" value={productAmount[product.id]} onChange={handleAmountChange.bind(null, product.id)}></input>

@@ -22,11 +22,13 @@
     width: 30%;
 }
 
-.cart_item > #edit,
-.cart_item > #delete {
+.cart_item .icon {
     cursor: pointer;
 }
 
+.cart_item input {
+    width: 20px;
+}
 
 .submit {
     width: 10%;
