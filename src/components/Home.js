@@ -12,7 +12,7 @@ const Home = ({cartTotal}) => {
     }
 
     return (
-        <div className='container'>
+        <div className='container' data-testid="home">
             <Header cartTotal={cartTotal}/>
             <div className='main_image'>
                 <img src={MAIN_IMAGE} alt=''></img>

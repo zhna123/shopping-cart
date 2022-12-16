@@ -50,7 +50,7 @@ const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
     }
 
     return (
-        <div className="container">
+        <div className="container" data-testid="shop">
             <Header cartTotal={cartTotal} />
             <div className="products">
                 {
