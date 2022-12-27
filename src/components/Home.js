@@ -17,7 +17,7 @@ const Home = ({cartTotal}) => {
             <div className='main_image'>
                 <img src={MAIN_IMAGE} alt=''></img>
                 <div>UPDATE YOUR HOME WITH TEXTILE
-                    <Link to="/shop" style={linkStyle}>
+                    <Link to="/shop" style={linkStyle} data-testid="see_products">
                         <button>SEE OUR PRODUCTS</button>
                     </Link>
                 </div>   

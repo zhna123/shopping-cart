@@ -22,7 +22,7 @@ const Cart = ({cartTotal, setCartTotal, cart, setCart}) => {
     const emptyMsg = "Your cart is empty."
     
     return (
-        <div className='container'>
+        <div className='container' data-testid="cart">
             <Header cartTotal={cartTotal}/>
             <div className='cart_content'>
                 { Object.keys(cart).length === 0 ? <div className='cart_msg'>{success ? successMsg : emptyMsg}</div> : 

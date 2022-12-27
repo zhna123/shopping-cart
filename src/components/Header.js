@@ -28,7 +28,7 @@ const Header = ({cartTotal}) => {
 
             <div className='cart'>
                 <div className='cart_amount'>{cartTotal}</div>
-                <Link to="/cart" >
+                <Link to="/cart" data-testid='cart_icon'>
                     <MaterialIcon icon="shopping_cart" size={50} color="#ffffff"/>
                 </Link>
             </div>

@@ -12,7 +12,7 @@ const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
     // this is to keep track of the user entered product amount
     // Initially all products have an amount of 0
     const [productAmount, setProductAmount] = useState(products.reduce((obj, product) => {
-        obj[product.id] = 0;
+        obj[product.id] = '';
         return obj;
     }, {}))
 
@@ -55,23 +55,23 @@ const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
             <div className="products">
                 {
                     products.map( product => (
-                        <div key={product.id}>
+                        <div key={product.id} data-testid="product">
                             <img src={product.image} alt=""></img>
                             <div className="title">{product.title} </div>
                             <div className="price">${product.price}</div>
                             <div className="ops">
                                 <div className="amount">
 
-                                    <div className="icon" onClick={handleAmountDec.bind(null, product.id)} >
+                                    <div className="icon" onClick={handleAmountDec.bind(null, product.id)} data-testid="remove-icon" >
                                         <MaterialIcon icon="remove" size={20}/>
                                     </div>
-                                    <input type='text' id="amnt" value={productAmount[product.id]} onChange={handleAmountChange.bind(null, product.id)}></input>
-                                    <div className="icon" onClick={handleAmountInc.bind(null, product.id)}>
+                                    <input type='text' id="amnt" placeholder="0" value={productAmount[product.id]} onChange={handleAmountChange.bind(null, product.id)}></input>
+                                    <div className="icon" onClick={handleAmountInc.bind(null, product.id)} data-testid="add-icon">
                                         <MaterialIcon icon="add" size={20}/>
                                     </div>
                             
                                 </div>
-                                <div className="icon" onClick={handleAddToCart.bind(null, product.id)}>
+                                <div className="icon" onClick={handleAddToCart.bind(null, product.id)} data-testid="add-to-cart">
                                     <MaterialIcon icon="add_shopping_cart" size={25} />
                                 </div>
                             </div>
