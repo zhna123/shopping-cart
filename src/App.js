@@ -15,7 +15,7 @@ function App() {
   const [cart, setCart] = useState({})
 
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path='/' element={<Home cartTotal = {cartTotal}/>} />
         <Route path='/shop' element={<Shop cartTotal = {cartTotal} setCartTotal = {setCartTotal}
