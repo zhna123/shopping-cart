@@ -15,7 +15,7 @@ function App() {
   const [cart, setCart] = useState({})
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <Routes>
         <Route path='/' element={<Home cartTotal = {cartTotal}/>} />
         <Route path='/shop' element={<Shop cartTotal = {cartTotal} setCartTotal = {setCartTotal}
