@@ -1,6 +1,7 @@
 :root {
     --dark_gray: rgb(53, 52, 52);
     --dark_blue: rgb(35, 57, 93);
+    --gold: #ffbf00
 }
 
 html, body {

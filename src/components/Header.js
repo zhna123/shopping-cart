@@ -1,7 +1,7 @@
 import '../style/header.css'
 import LOGO from '../images/logo.png'
+import CART from '../images/cart.png';
 import { Link } from 'react-router-dom';
-import MaterialIcon from 'material-icons-react';
 
 const Header = ({cartTotal}) => {
     const goldColorStyle = {
@@ -29,7 +29,7 @@ const Header = ({cartTotal}) => {
             <div className='cart'>
                 <div className='cart_amount'>{cartTotal}</div>
                 <Link to="/cart" data-testid='cart_icon'>
-                    <MaterialIcon icon="shopping_cart" size={60} color="#ffffff"/>
+                    <img src={CART} alt=''></img>
                 </Link>
             </div>
         </nav>

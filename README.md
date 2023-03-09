@@ -21,14 +21,16 @@ testing fix:
 npm install @testing-library/user-event@latest
 
 ## react testing
+`npm test -- TestFileToRun`
+
 react testing library
 testing framework: Jest
-
-`npm test -- TestFileToRun`
 
 * select element - getby, queryby, findby
 * assertive functions
 
 ## deploy
 [deploy React applications with client-side routing to Github Pages](https://create-react-app.dev/docs/deployment/#github-pages)
+
+`npm run deploy`
 

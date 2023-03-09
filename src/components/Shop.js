@@ -62,17 +62,6 @@ const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
                                                 handleAmountChange = { handleAmountChange }
                                                 handleAmountDec = { handleAmountDec } 
                                                 handleAmountInc = { handleAmountInc }/>
-                                {/* <div className="amount">
-
-                                    <div className="icon" onClick={handleAmountDec.bind(null, product.id)} data-testid="remove-icon" >
-                                        <MaterialIcon icon="remove" size={20}/>
-                                    </div>
-                                    <input type='text' id="amnt" placeholder="0" value={productAmount[product.id]} onChange={handleAmountChange.bind(null, product.id)}></input>
-                                    <div className="icon" onClick={handleAmountInc.bind(null, product.id)} data-testid="add-icon">
-                                        <MaterialIcon icon="add" size={20}/>
-                                    </div>
-                            
-                                </div> */}
                                 <div className="icon" onClick={handleAddToCart.bind(null, product.id)} data-testid="add-to-cart">
                                     <MaterialIcon icon="add_shopping_cart" size={25} />
                                 </div>
