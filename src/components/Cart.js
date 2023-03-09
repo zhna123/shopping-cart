@@ -1,10 +1,9 @@
-import '../style/home.css'
-import Header from './Header';
-import Footer from './Footer';
 import "../style/cart.css"
+
 import { products } from '../products';
 import MaterialIcon from 'material-icons-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import AmountAdjust from './AmountAdjust';
 
 const Cart = ({cartTotal, setCartTotal, cart, setCart}) => {
 
@@ -23,13 +22,14 @@ const Cart = ({cartTotal, setCartTotal, cart, setCart}) => {
     
     return (
         <div className='container' data-testid="cart">
-            <Header cartTotal={cartTotal}/>
             <div className='cart_content'>
                 { Object.keys(cart).length === 0 ? <div className='cart_msg'>{success ? successMsg : emptyMsg}</div> : 
                     (
                         Object.entries(cart).map(([key, value]) => {
                             return (
-                                <CartItem key={key} productId={key} amount={value} cart={cart} setCart={setCart} cartTotal={cartTotal} setCartTotal={setCartTotal}/>
+                                <CartItem key={key} productId={key} amount={value} 
+                                        cart={cart} setCart={setCart} 
+                                        cartTotal={cartTotal} setCartTotal={setCartTotal}/>
                             );
                         })
                     )
@@ -38,38 +38,43 @@ const Cart = ({cartTotal, setCartTotal, cart, setCart}) => {
             { Object.keys(cart).length === 0 ? null : 
                 <button className='submit' onClick={handleSubmit}>SUBMIT ORDER</button>
             }
-            <Footer />
         </div>
     )
 }
 
 const CartItem = ({productId, amount, cart, setCart, cartTotal, setCartTotal}) => {
 
-    const [edit, setEdit] = useState(false);
     const [quantity, setQuantity] = useState(amount)
 
     const onDelete = () => {
         const {[productId]: _, ...rest} = cart;
         setCart(rest);
-        setCartTotal(cartTotal - amount)
+        setCartTotal(cartTotal - quantity)
     }
 
-    const onEdit = () => {
-        setEdit(true);
-    }
-
-    const onBlur = (quantity) => {
-        setEdit(false)
-        setQuantity(quantity)
-        
-        setCartTotal(cartTotal + (quantity - amount))
-        setCart({...cart, [productId]: quantity})
-    }
-
-    const handleChange = (e) => {
+    const handleAmountChange = (prodId, e) => {
         const input = e.target.value;
-        if (!isNaN(input) && input > 0) {
-            setQuantity(e.target.value);
+        if(!isNaN(input)) {
+            setQuantity(input)
+
+            setCartTotal(cartTotal - quantity + +input )
+            setCart({...cart, [prodId]: +input})
+        }
+    }
+
+    const handleAmountInc = (prodId) => {
+        setQuantity(quantity + 1)
+
+        setCartTotal(cartTotal + 1)
+        setCart({...cart, [prodId]: quantity + 1})
+
+    }
+
+    const handleAmountDec = (prodId) => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1)
+            setCartTotal(cartTotal - 1)
+            setCart({...cart, [prodId]: quantity - 1})   
         }
     }
 
@@ -81,14 +86,12 @@ const CartItem = ({productId, amount, cart, setCart, cartTotal, setCartTotal}) =
                 <img src={product.image} alt=""></img>
             </div>
             <div>{product.title}</div>
-            {edit ? <input type="text" value={quantity} onBlur={onBlur.bind(null, quantity)} onChange={handleChange} autoFocus/>
-                    : <div>{quantity}</div>}
-
-            <div className='icon edit' onClick={onEdit}>
-                <MaterialIcon icon="edit" size={20} />
-            </div>
-                              
-            <div>${+product.price * +amount}</div>
+            <AmountAdjust productId={ productId } amount = { quantity } 
+                            handleAmountChange = { handleAmountChange }
+                            handleAmountDec = { handleAmountDec }
+                            handleAmountInc = { handleAmountInc } />
+                            
+            <div>${+product.price * +quantity}</div>
 
             <div className='icon' onClick={onDelete}>
                 <MaterialIcon icon="delete" size={20} />

@@ -20,8 +20,12 @@ nav > .cart {
 
 .cart > .cart_amount {
     position: absolute;
-    top: 15%;
-    left: 35%;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--dark_blue);
 }
 
 ul {

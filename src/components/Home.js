@@ -1,7 +1,5 @@
 import '../style/home.css'
 import MAIN_IMAGE from '../images/front-image.jpeg'
-import Header from './Header';
-import Footer from './Footer';
 import { Link } from 'react-router-dom';
 
 const Home = ({cartTotal}) => {
@@ -13,7 +11,6 @@ const Home = ({cartTotal}) => {
 
     return (
         <div className='container' data-testid="home">
-            <Header cartTotal={cartTotal}/>
             <div className='main_image'>
                 <img src={MAIN_IMAGE} alt=''></img>
                 <div>UPDATE YOUR HOME WITH TEXTILE
@@ -22,7 +19,6 @@ const Home = ({cartTotal}) => {
                     </Link>
                 </div>   
             </div>
-            <Footer />
         </div>
     )
 }

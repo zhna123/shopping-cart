@@ -41,7 +41,7 @@
     margin-top: auto;
 }
 
-.products .amount {
+.amount {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,6 +53,6 @@
     text-align: center;
 }
 
-.ops .icon {
+.icon {
     cursor: pointer;
 }

@@ -1,10 +1,9 @@
-import Footer from "./Footer";
-import Header from "./Header";
 import "../style/shop.css"
 import MaterialIcon from 'material-icons-react';
 
 import { useState } from "react";
 import { products } from "../products";
+import AmountAdjust from "./AmountAdjust";
 
 const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
 
@@ -51,7 +50,6 @@ const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
 
     return (
         <div className="container" data-testid="shop">
-            <Header cartTotal={cartTotal} />
             <div className="products">
                 {
                     products.map( product => (
@@ -60,7 +58,11 @@ const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
                             <div className="title">{product.title} </div>
                             <div className="price">${product.price}</div>
                             <div className="ops">
-                                <div className="amount">
+                                <AmountAdjust productId = {product.id} amount = {productAmount[product.id]}
+                                                handleAmountChange = { handleAmountChange }
+                                                handleAmountDec = { handleAmountDec } 
+                                                handleAmountInc = { handleAmountInc }/>
+                                {/* <div className="amount">
 
                                     <div className="icon" onClick={handleAmountDec.bind(null, product.id)} data-testid="remove-icon" >
                                         <MaterialIcon icon="remove" size={20}/>
@@ -70,7 +72,7 @@ const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
                                         <MaterialIcon icon="add" size={20}/>
                                     </div>
                             
-                                </div>
+                                </div> */}
                                 <div className="icon" onClick={handleAddToCart.bind(null, product.id)} data-testid="add-to-cart">
                                     <MaterialIcon icon="add_shopping_cart" size={25} />
                                 </div>
@@ -79,7 +81,6 @@ const Shop = ({cartTotal, setCartTotal, cart, setCart}) => {
                     ))
                 }
             </div>
-            <Footer />
         </div>
     )
 }

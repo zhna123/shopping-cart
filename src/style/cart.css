@@ -22,14 +22,6 @@
     width: 30%;
 }
 
-.cart_item .icon {
-    cursor: pointer;
-}
-
-.cart_item input {
-    width: 20px;
-}
-
 .submit {
     width: 10%;
     height: 40px;

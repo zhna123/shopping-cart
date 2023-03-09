@@ -25,11 +25,11 @@ const Header = ({cartTotal}) => {
                 <li>ABOUT</li>
             </ul>
             <img src={LOGO} alt=''></img>
-
+            
             <div className='cart'>
                 <div className='cart_amount'>{cartTotal}</div>
                 <Link to="/cart" data-testid='cart_icon'>
-                    <MaterialIcon icon="shopping_cart" size={50} color="#ffffff"/>
+                    <MaterialIcon icon="shopping_cart" size={60} color="#ffffff"/>
                 </Link>
             </div>
         </nav>

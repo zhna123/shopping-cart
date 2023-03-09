@@ -20,9 +20,11 @@ npm i material-icons-react
 testing fix:
 npm install @testing-library/user-event@latest
 
-## practice react testing
+## react testing
 react testing library
 testing framework: Jest
+
+`npm test -- TestFileToRun`
 
 * select element - getby, queryby, findby
 * assertive functions
