@@ -9,8 +9,13 @@ const Header = ({cartTotal}) => {
     }
     const linkStyle = {
         textDecoration: 'none',
-        color: '#fff'
-        
+        color: '#fff'      
+    }
+
+    const cartLinkStyle = {
+        display: "inline-block",
+        height: "40px",
+        width: "40px"
     }
 
     return (
@@ -28,7 +33,7 @@ const Header = ({cartTotal}) => {
             
             <div className='cart'>
                 <div className='cart_amount'>{cartTotal}</div>
-                <Link to="/cart" data-testid='cart_icon'>
+                <Link to="/cart" data-testid='cart_icon' style={cartLinkStyle}>
                     <img src={CART} alt=''></img>
                 </Link>
             </div>

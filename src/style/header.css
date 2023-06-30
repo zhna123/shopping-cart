@@ -45,10 +45,13 @@ nav > .cart {
     transform: translate(0, -50%);
     font-size: 1.2rem;
     color: var(--gold);
+    z-index: 1;
 }
 
 .cart img {
     width: 40px;
+    position: relative;
+    z-index: 2;
 }
 
 
