@@ -1,20 +1,27 @@
 .main_image {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    height: 100%;
+    height: 100vh;
 }
 
 .main_image > img {
     width: 70%;
     height: 100%;
+    object-fit: cover;
 }
 
 .main_image > div {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
+.main_image > div > p {
     font-weight: bold;
     color: rgb(35, 57, 93);
     font-size: 1.2rem;
-    padding: 10px;
 }
 
 .main_image button {
@@ -26,6 +33,17 @@
     height: 50px;
     color: white;
     padding: 5px;
-    margin-top: 50px;
     cursor: pointer;
+    margin: 20px auto;
+}
+
+@media (max-width: 600px) {
+    .main_image > div > p {
+        font-size: 1rem;
+    }
+
+    .main_image button {
+        width: 100px;
+        height: 40px;
+    }
 }

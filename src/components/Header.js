@@ -15,7 +15,7 @@ const Header = ({cartTotal}) => {
 
     return (
         <nav>
-            <ul>
+            <ul className='menu'>
                 <Link to="/" style={linkStyle}>
                     <li>HOME</li>
                 </Link>
